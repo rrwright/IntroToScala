@@ -9,13 +9,18 @@ object Types {
   val b: Int = 5
 
 
-  // Product type
-  class ParentType
-  class ProductTypeExample(i: Int) extends ParentType
+  // Sum types -- Encoded by subclassing
+  sealed abstract class ParentType
+  class SumTypeExample(i: Int) extends ParentType
+  class OtherSumTypeExample(i: Int) extends ParentType
+
+  val sumType: ParentType = new SumTypeExample(5)
 
 
-  // Sum types
-  case class SumTypeExample(a: Int, b: Int)
+  // Product types
+  case class ProductTypeExample(a: Int, b: Int)
+
+  ProductTypeExample(1,5)
 
 
   // Traits
@@ -44,9 +49,6 @@ object Types {
   val apples = List(Apple, Apple)
   val oranges = List(Orange, Orange)
   val fruit = List(Apple, Orange)
-  apples
-  oranges
-  fruit
 
 
   // Type parameters
